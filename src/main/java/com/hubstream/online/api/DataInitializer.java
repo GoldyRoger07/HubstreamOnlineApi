@@ -26,9 +26,9 @@ public class DataInitializer implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         // compteService.updateComptePoints();
         // winnerService.createLastWinner();
-        // ajouterCompteParDefaut("Gouraige", "Francesse", "raiki", "raiki2000",
-        // "2000");
-        // ajouterCompteParDefaut("Latouche", "Gerson", "sonix", "latou0504", "0101");
+        ajouterCompteParDefaut("Gouraige", "Francesse", "raiki",
+        "2000");
+        ajouterCompteParDefaut("Latouche", "Gerson", "sonix", "0101");
 
     }
 
@@ -43,9 +43,28 @@ public class DataInitializer implements ApplicationRunner {
         // compte.setDateEnregistrement(LocalDate.now());
 
         if (!compteService.getCompteByUsername(username).isPresent()) {
-            compteService.update(compte);
+            compteService.save(compte);
         }
 
     }
 
 }
+/*
+ * 
+        Film,Serie ou Animes
+        Plan 1 Jour 50 HTG 
+        Plan 3 Jours 125 HTG
+        Plan 7 Jours 295 HTG
+        Plan 30 Jours 1150 HTG
+
+        Film,Serie ou Animes
+        Plan 1 Jour 65 HTG 
+        Plan 3 Jours 160 HTG
+        Plan 7 Jours 380 HTG
+        Plan 30 Jours 1495 HTG
+
+
+
+
+
+ */

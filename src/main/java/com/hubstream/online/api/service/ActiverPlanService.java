@@ -36,8 +36,21 @@ public class ActiverPlanService {
         return false;
     }
 
-    public List<ActiverPlan> getActiverPlans() {
+    public List<ActiverPlan> getActiverPlans(){
         return activerPlanRepository.findAll();
+    }
+
+    public List<ActiverPlan> getActiverPlansToUpdate() {
+        List<ActiverPlan> resultat = new ArrayList<>();
+        for(ActiverPlan ac: activerPlanRepository.findAll()){
+            ac.getCompte().setActiverPlans(null);
+            ac.getCompte().setNotifications(null);
+            resultat.add(ac);
+        }
+
+        return resultat;
+       
+        
     }
 
     public void deleteActiverPlan(final int idActiverPlan) {
@@ -160,6 +173,23 @@ public class ActiverPlanService {
     //     }
 
        
+    // }
+
+
+    // public void SauvegardeActiverPlan() {
+    //     List<ActiverPlan> activerPlans = getActiverPlans();
+
+    //     List<String> sqlQueries = new ArrayList<>();
+
+    //     for (ActiverPlan ap : activerPlans) {
+    //         String sqlQuerie = "INSERT INTO activer_plan VALUES (0,'" + ap.getDateDebut() + "','"
+    //                 + ap.getDateExpiration() + "','" + ap.getEtat() + "','" + ap.getCompte().getIdCompte() + "',"
+    //                 + ap.getPlan().getIdPlan() + "," + ap.isPlanBonus() + ");";
+
+    //         sqlQueries.add(sqlQuerie);
+    //     }
+
+    //     MainService.sauvegardeSql("activerPlans.sql", sqlQueries);
     // }
 
 }

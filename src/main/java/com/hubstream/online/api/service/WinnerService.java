@@ -51,7 +51,6 @@ public class WinnerService {
         for (Winner w : getWinners()) {
             if (w.isLastWinner())
                 return w;
-
         }
 
         return null;
@@ -93,15 +92,6 @@ public class WinnerService {
             winner.setLastWinner(true);
 
             save(winner);
-        }
-
-        compteService.resetPoints();
-
-        int points = 10;
-        for (Compte c : top5BestComptes) {
-            c.setPoints(points);
-            compteService.update(c);
-            points = points - 2;
         }
 
     }

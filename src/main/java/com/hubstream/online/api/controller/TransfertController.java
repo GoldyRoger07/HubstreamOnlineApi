@@ -17,7 +17,7 @@ import com.hubstream.online.api.service.NotificationService;
 import com.hubstream.online.api.service.TransfertService;
 
 @RestController
-@RequestMapping("/api.hubstream.com")
+@RequestMapping("/api.online.hubstream.com")
 public class TransfertController {
 
     @Autowired

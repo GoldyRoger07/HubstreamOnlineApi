@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hubstream.online.api.model.ActivationPlan;
-import com.hubstream.online.api.model.ActivationPlanBonus;
 import com.hubstream.online.api.model.ActivationPlanPayant;
 import com.hubstream.online.api.model.ActiverPlan;
 import com.hubstream.online.api.model.ActiverPlanIntermediaire;
@@ -26,7 +25,7 @@ import com.hubstream.online.api.service.CompteService;
 import com.hubstream.online.api.service.PlanService;
 
 @RestController
-@RequestMapping("/api.hubstream.com")
+@RequestMapping("/api.online.hubstream.com")
 public class PlanController {
     @Autowired
     PlanService planService;
@@ -40,9 +39,9 @@ public class PlanController {
     @GetMapping("/plans")
     public PlansContainer getPlans() {
         PlansContainer plansContainer = new PlansContainer();
-        plansContainer.setPlansFilm(planService.getPlansByType("Film"));
-        plansContainer.setPlansSerie(planService.getPlansByType("Serie"));
-        plansContainer.setPlansAnime(planService.getPlansByType("Anime"));
+        // plansContainer.setPlansFilm(planService.getPlansByType("Film"));
+        // plansContainer.setPlansSerie(planService.getPlansByType("Serie"));
+        // plansContainer.setPlansAnime(planService.getPlansByType("Anime"));
         plansContainer.setPlansAll(planService.getPlansByType("All"));
 
         return plansContainer;
@@ -80,6 +79,11 @@ public class PlanController {
         }
 
         return null;
+    }
+
+    @GetMapping("/activerPlans")
+    public List<ActiverPlan> getActiverPlans(){
+        return activerPlanService.getActiverPlans();
     }
 
     @GetMapping("/plan/actif/{type}/{idCompte}")

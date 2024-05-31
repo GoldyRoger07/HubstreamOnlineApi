@@ -23,7 +23,7 @@ import com.hubstream.online.api.service.MainService;
 import com.hubstream.online.api.service.WinnerService;
 
 @RestController
-@RequestMapping("/api.hubstream.com")
+@RequestMapping("/api.online.hubstream.com")
 public class CompteController {
 
     @Autowired
@@ -37,7 +37,6 @@ public class CompteController {
 
     @GetMapping("/comptes")
     public List<Compte> getAllComptes() {
-
         return compteService.getSafeComptes();
     }
 
@@ -148,7 +147,7 @@ public class CompteController {
         if (compte.getUsername().equals(compteUpdate.getUsername())) {
             effectuerModification(compte, compteUpdate);
             return "{\"resultat\":true}";
-        } else if (!testUsername) {
+        } else if (testUsername) {
 
             effectuerModification(compte, compteUpdate);
             return "{\"resultat\":true}";
@@ -184,7 +183,7 @@ public class CompteController {
     @ResponseBody
     public String getLastWinnerTitle() {
         Winner winner = winnerService.getLastWinner();
-        System.out.println(winner.getDateWin().getMonthValue() - 1);
+      
         String title = "Le Meilleur utilisateur du mois de mars";
         if (winner != null)
             title = "Le Meilleur utilisateur du mois " + MainService.getMois(winner.getDateWin().getMonthValue() - 1);

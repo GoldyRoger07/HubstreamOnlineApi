@@ -1,6 +1,5 @@
 package com.hubstream.online.api.model;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -84,6 +83,8 @@ public class Compte {
     public boolean testRetraitPoints(double pointsARetirer) {
         return pointsARetirer <= points && pointsARetirer > 0;
     }
+
+    
 
 
 }

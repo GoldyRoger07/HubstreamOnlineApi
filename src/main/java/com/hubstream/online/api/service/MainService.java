@@ -1,5 +1,8 @@
 package com.hubstream.online.api.service;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -85,4 +88,17 @@ public class MainService<T> {
         return mois;
 
     }
+
+    public static void sauvegardeSql(String fileName, List<String> sqlQueries) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (String sqlQuery : sqlQueries) {
+                writer.write(sqlQuery);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
 }
