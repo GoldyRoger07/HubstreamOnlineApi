@@ -1,10 +1,6 @@
 package com.hubstream.online.api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -13,12 +9,14 @@ import lombok.Data;
 public class Plan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_plan")
     private int idPlan;
 
     private String titre;
 
     private int duree;
 
+    @Column(name="duree_extension")
     private String dureeExtension;
 
     private double prix;

@@ -18,9 +18,10 @@ public class Transfert {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_transaction")
     private int idTransaction;
 
-    @Column(unique = true)
+    @Column(unique = true,name="code_transfert")
     private String codeTransfert;
 
     @ManyToOne
@@ -33,6 +34,7 @@ public class Transfert {
 
     private double montant;
 
+    @Column(name = "date_transfert")
     private LocalDateTime dateTransfert;
 
 }

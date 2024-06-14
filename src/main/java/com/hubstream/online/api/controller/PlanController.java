@@ -20,6 +20,7 @@ import com.hubstream.online.api.model.Compte;
 import com.hubstream.online.api.model.FormActiverPlan;
 import com.hubstream.online.api.model.Plan;
 import com.hubstream.online.api.model.PlansContainer;
+import com.hubstream.online.api.model.TestResponse;
 import com.hubstream.online.api.service.ActiverPlanService;
 import com.hubstream.online.api.service.CompteService;
 import com.hubstream.online.api.service.PlanService;
@@ -86,6 +87,16 @@ public class PlanController {
         return activerPlanService.getActiverPlans();
     }
 
+    @GetMapping("/activerPlans/test/compte/{idCompte}/{type}")
+    public TestResponse getTestResponse(@PathVariable("idCompte") String idCompte,@PathVariable("type") String type){
+        Compte compte = compteService.getCompte(idCompte).get();
+        boolean testActiverPlan = activerPlanService.testPlanActive(compte.getActiverPlans(), type);
+        activerPlanService.updateActivePlans();
+        TestResponse testResponse = new TestResponse();
+        testResponse.setPass(testActiverPlan);
+        return testResponse;
+    }
+
     @GetMapping("/plan/actif/{type}/{idCompte}")
     public ActiverPlan getPlansActif(@PathVariable("type") String type, @PathVariable("idCompte") String idCompte) {
         Optional<Compte> compteOpt = compteService.getCompte(idCompte);
@@ -125,3 +136,30 @@ public class PlanController {
     }
 
 }
+
+
+/*
+ * 
+ *  @Autowired
+  RestTemplate restTemplate;
+
+
+  @GetMapping(value = "vid/film/{videoName:.+}/{id}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+  public Mono<Resource> getFilm(@PathVariable("videoName") String videoName, @PathVariable("id") String idCompte) {
+    // String baseUrlApiExterne = "http:192.168.0.119:9001/api.online.hubstream.com";
+    // String cheminRacine = parametresFileService.getParametresFiles().get(0).getFolderRacine();
+    // StreamFile streamFile = streamFileService.getStreamFile(videoName).get();
+    // String queryUrl = baseUrlApiExterne+"/activerPlans/test/compte/"+idCompte+"/Film";
+    // ResponseEntity<TestResponse> responseEntity = restTemplate.getForEntity(queryUrl, TestResponse.class);
+    // TestResponse testResponse = responseEntity.getBody();
+    // if (testResponse!=null && testResponse.isPass()){
+    //   System.out.println(cheminRacine + streamFile.getFilePath());
+    //   return Mono.fromSupplier(() -> new FileSystemResource(cheminRacine + streamFile.getFilePath()));
+    // }
+
+
+     
+
+    return null;
+  }
+ */

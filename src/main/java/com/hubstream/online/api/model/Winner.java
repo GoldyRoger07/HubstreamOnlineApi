@@ -2,13 +2,7 @@ package com.hubstream.online.api.model;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -17,10 +11,13 @@ import lombok.Data;
 public class Winner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_winner")
     private int idWinner;
 
+    @Column(name="date_win")
     private LocalDate dateWin;
 
+    @Column(name="last_winner")
     private boolean lastWinner;
 
     private int time;

@@ -2,11 +2,7 @@ package com.hubstream.online.api.model;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -14,6 +10,7 @@ import lombok.Data;
 @Table(name="comptes")
 public class Compte {
     @Id
+    @Column(name="id_compte")
     private String idCompte;
 
     private String nom;
@@ -24,6 +21,7 @@ public class Compte {
 
     private String username;
 
+    @Column(name="code_pin")
     private String codePin;
 
     private String role;
