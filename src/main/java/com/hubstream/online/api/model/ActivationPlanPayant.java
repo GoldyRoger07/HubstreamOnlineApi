@@ -19,6 +19,7 @@ public class ActivationPlanPayant implements ActivationPlan {
 
         ActiverPlan activerPlan = new ActiverPlan();
         activerPlan.setPlanBonus(false);
+        activerPlan.setLivraison(0);
 
         if (activerPlanService.testPlanActive(compte.getActiverPlans(), plan.getType()))
             activerPlan.setEtat("attente");

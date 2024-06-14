@@ -33,6 +33,8 @@ public class ActiverPlan {
     @Column(name="is_plan_bonus")
     private boolean isPlanBonus;
 
+    private int livraison;
+
     @ManyToOne
     @JoinColumn(name = "id_compte")
     @JsonIgnore

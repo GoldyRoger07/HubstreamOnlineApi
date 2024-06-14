@@ -25,6 +25,8 @@ public class Plan {
 
     private String type;
 
+    private int livraison;
+
     public String getFormatPrix() {
         return (prix % 1 == 0) ? String.valueOf((int) prix) : String.valueOf(prix);
     }
