@@ -44,12 +44,9 @@ public class TransfertController {
 
         if (role.equals("admin")) {
 
-           if(!compteDestinataire.getRole().equals("user") ){
-                if (montantTransfert > 499 )
-                    pourcentage = 1.1;
-                if (montantTransfert > 4999)
+           if(!compteDestinataire.getRole().equals("user") )
                     pourcentage = 1.2;
-           }    
+               
            
 
             compteDestinataire.effectuerDepot(montantTransfert * pourcentage);
@@ -57,7 +54,7 @@ public class TransfertController {
 
         } else {
 
-            if (montantTransfert>499 && compteSource.testRetrait(montantTransfert)) {
+            if ( compteSource.testRetrait(montantTransfert)) {
                 compteSource.effectuerRetrait(montantTransfert);
                 compteDestinataire.effectuerDepot(montantTransfert);
 
